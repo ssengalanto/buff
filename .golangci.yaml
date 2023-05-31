@@ -1,7 +1,7 @@
 run:
   # Timeout for analysis, e.g. 30s, 5m.
   # Default: 1m
-  timeout: 5m
+  timeout: 3m
 
 # This file only includes configurations that deviate from the defaults.
 # You can find all available options at https://github.com/golangci/golangci-lint/blob/master/.golangci.reference.yml.
@@ -189,3 +189,10 @@ linters:
     #- scopelint # [deprecated, replaced by exportloopref] checks for unpinned variables in go programs
     #- structcheck # [deprecated, replaced by unused] finds unused struct fields
     #- varcheck # [deprecated, replaced by unused] finds unused global variables and constants
+
+issues:
+  exclude-rules:
+    # Exclude some linters from running on doc.go files.
+    - path: doc\.go
+      linters:
+        - lll
